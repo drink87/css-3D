@@ -1,1 +1,303 @@
-123
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>CSS 3D</title>
+    <style>
+        @-webkit-keyframes ani {
+            0% {
+                -webkit-transform: rotateY(0deg);
+                color: navy;
+                background-color: -webkit-linear-gradient(0, lime, aqua);
+            }
+    
+            100% {
+                -webkit-transform: rotateY(360deg);
+                color: yellow;
+                background-color: -webkit-linear-gradient(0, aqua, lime);
+            }
+        }   
+        @keyframes ani {
+            0% {
+                -webkit-transform: rotateY(0deg);
+                color: navy;
+                background-color: -webkit-linear-gradient(0, lime, aqua);
+            }
+    
+            100% {
+                -webkit-transform: rotateY(360deg);
+                color: yellow;
+                background-color: -webkit-linear-gradient(0, aqua, lime);
+            }
+        }   
+        body {
+            background-color: gray;
+        }
+        #object {
+            perspective: 500;
+            -webkit-perspective: 500;
+        }
+        #back {
+            width: 20rem;
+            height: 3rem;
+            background: navy;
+            font-size: 3rem;
+            text-transform: capitalize;
+            margin: 5rem auto;
+            position: relative;
+            animation: ani 6s linear infinite alternate;
+            -webkit-animation: ani 6s linear infinite alternate;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+        }
+        #text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20rem;
+            height: 3rem;
+            color: green;
+            background: brown;
+            font-weight: bold;
+            text-shadow: .03em .03em .03em black,
+                -.03em -.03em .03em white;
+            transform: translateZ(30px);
+            -webkit-transform: translateZ(30px);
+        }   
+        .around {
+            position: absolute;
+        }   
+        #top {
+            width: 20rem;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background: green;
+            transform-origin: center top;
+            -webkit-transform-origin: center top;
+            transform: rotateX(90deg);
+            -webkit-transform: rotateX(90deg);
+        }
+        #left {
+            width: 30px;
+            height: 3rem;
+            top: 0;
+            left: 0;
+            background: yellow;
+            transform-origin: left center;
+            -webkit-transform-origin: left center;
+            transform: rotateY(-90deg);
+            -webkit-transform: rotateY(-90deg);
+        }
+        #right {
+            width: 30px;
+            height: 3rem;
+            top: 0;
+            right: 0;
+            background: purple;
+            transform-origin: right center;
+            -webkit-transform-origin: right center;
+            transform: rotateY(90deg);
+            -webkit-transform: rotateY(90deg);
+        }
+        #bottom {
+            width: 20rem;
+            height: 30px;
+            bottom: 0;
+            left: 0;
+            background: aqua;
+            transform-origin: center bottom;
+            -webkit-transform-origin: center bottom;
+            transform: rotateX(-90deg);
+            -webkit-transform: rotateX(-90deg);
+        }
+        #control {
+            list-style: none;
+            position: fixed;
+            bottom: .8rem;
+            left: 50%;
+            max-width: 30rem;
+            min-width: 20rem;
+            background: teal;
+            color: white;
+            text-align: center;
+            margin: auto;
+            padding: 1rem;
+            border-radius: 5%;
+            box-shadow: 0 .3rem .5rem black;
+            -webkit-box-shadow: 0 .3rem .5rem black;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+        }
+        li {
+            border-bottom: 1px solid gray;
+            line-height: 1.5rem;
+        }
+        .label {
+            width: 3rem;
+            float: left;
+            text-align: right;
+        }
+        .value {
+            display: inline-block;
+            width: 2rem;
+        }
+        .range {
+            display: inline-block;
+            width: 70%;
+            margin-bottom: 10px;
+        }
+        #reset {
+            display: inline-block;
+            width: 5rem;
+            font-size: 1.2rem;
+            margin: auto;
+            border-radius: .4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="object">
+        <div id="back">
+            <div id="top" class="around"></div>
+            <div id="left" class="around"></div>
+            <div id="text">hello world</div>
+            <div id="right" class="around"></div>
+            <div id="bottom" class="around"></div>
+        </div>
+    </div>
+
+    <ul id="control">
+        <li>
+            <label class="label">X:</label>
+            <span class="value value-x"></span>
+            <input type="range" id="range-x" class="range" min="-360" max="360" step="1" />
+        </li>
+        <li>
+            <label class="label">Y:</label>
+            <span class="value value-y"></span>
+            <input type="range" id="range-y" class="range" min="-360" max="360" step="1" />
+        </li>
+        <li>
+            <label class="label">Z:</label>
+            <span class="value value-z"></span>
+            <input type="range" id="range-z" class="range" min="-360" max="360" step="1" />
+        </li>
+        <li>
+            <label class="label">透视:</label>
+            <span class="value value-p"></span>
+            <input type="range" id="range-p" class="range" min="0" max="5000" step="1" value="500" />
+        </li>
+        <li>
+            <label class="label">长度:</label>
+            <span class="value value-l"></span>
+            <input type="range" id="range-l" class="range" min="0" max="30" step=".1" value="20" />
+        </li>
+        <li>
+            <label class="label">宽度:</label>
+            <span class="value value-w"></span>
+            <input type="range" id="range-w" class="range" min="0" max="360" step="1" value="30" />
+        </li>
+        <li>
+            <label class="label">高度:</label>
+            <span class="value value-h"></span>
+            <input type="range" id="range-h" class="range" min="0" max="40" step=".1" value="3" />
+        </li>
+        <button id="reset" onclick="resetValue()">重置</button>
+    </ul>
+
+    <script>
+        var objectDiv = document.querySelector('#object');
+        var backDiv = document.querySelector('#back');
+        var frontDiv = document.querySelector('#text');
+        var topDiv = document.querySelector('#top'),
+            leftDiv = document.querySelector('#left'),
+            rightDiv = document.querySelector('#right');
+        bottomDiv = document.querySelector('#bottom');
+        var rgX = document.querySelector('#range-x'),
+            rgY = document.querySelector('#range-y'),
+            rgZ = document.querySelector('#range-z'),
+            rgP = document.querySelector('#range-p'),
+            rgL = document.querySelector('#range-l'),
+            rgW = document.querySelector('#range-w'),
+            rgH = document.querySelector('#range-h');
+        var valueX = document.querySelector('.value-x'),
+            valueY = document.querySelector('.value-y'),
+            valueZ = document.querySelector('.value-z'),
+            valueP = document.querySelector('.value-p'),
+            valueL = document.querySelector('.value-l'),
+            valueW = document.querySelector('.value-w'),
+            valueH = document.querySelector('.value-h');
+        var reset = document.querySelector('#reset');
+
+        function stopAnimation() {
+            document.getelemen
+            // Stop animation.
+            backDiv.style.animationIterationCount = '0';
+            backDiv.style.webkitAnimationIterationCount = '0';
+        }
+        function startAnimation() {
+            // Start animation.
+            backDiv.style.animationIterationCount = 'infinite';
+            backDiv.style.webkitAnimationIterationCount = 'infinite';
+        }
+
+        document.onmousedown = stopAnimation;
+        document.ontouchstart = stopAnimation;
+
+        function resetValue() {
+            // Reset value.
+            rgX.value = 0,
+                rgY.value = 0,
+                rgZ.value = 0,
+                rgP.value = 500,
+                rgL.value = 20,
+                rgW.value = 30,
+                rgH.value = 3;
+            startAnimation();
+        }
+
+        setInterval(function () {
+            // Set value.
+            valueX.innerText = rgX.value,
+                valueY.innerText = rgY.value,
+                valueZ.innerText = rgZ.value,
+                valueP.innerText = rgP.value,
+                valueL.innerText = rgL.value,
+                valueW.innerText = rgW.value,
+                valueH.innerText = rgH.value;
+            // Set rotate x, y, z.
+            backDiv.style.transform = 'rotateX(' + rgX.value + 'deg) ' +
+                'rotateY(' + rgY.value + 'deg) ' +
+                'rotateZ(' + rgZ.value + 'deg)';
+            backDiv.style.webkitTransform = 'rotateX(' + rgX.value + 'deg) ' +
+                'rotateY(' + rgY.value + 'deg) ' +
+                'rotateZ(' + rgZ.value + 'deg)';
+            // Set perspective.
+            objectDiv.style.perspective = rgP.value;
+            objectDiv.style.webkitPerspective = rgP.value;
+            // Set length.
+            backDiv.style.width = rgL.value + 'rem',
+                frontDiv.style.width = rgL.value + 'rem',
+                bottomDiv.style.width = rgL.value + 'rem',
+                topDiv.style.width = rgL.value + 'rem';
+            // Set width.
+            topDiv.style.height = rgW.value + 'px',
+                bottomDiv.style.height = rgW.value + 'px',
+                leftDiv.style.width = rgW.value + 'px',
+                rightDiv.style.width = rgW.value + 'px';
+            frontDiv.style.transform = 'translateZ(' + rgW.value + 'px)';
+            frontDiv.style.webkitTransform = 'translateZ(' + rgW.value + 'px)';
+            // Set height.
+            frontDiv.style.height = rgH.value + 'rem',
+                leftDiv.style.height = rgH.value + 'rem',
+                rightDiv.style.height = rgH.value + 'rem',
+                backDiv.style.height = rgH.value + 'rem';
+        }, 0);
+    </script>
+</body>
+
+</html>
