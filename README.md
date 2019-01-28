@@ -1,2 +1,9 @@
 # css-3D
-css3结合js实现一些3D模型控制效果
+css transform属性结合js实现一些3D模型控制效果；
+
+包含的控制效果：
+- translateX(), translateY(), translateZ()
+- rotateX(), rotateY(), rotateZ()
+- perspective()
+
+更多效果后期完善中；
