@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" charset="UTF-8">
+    <link rel="stylesheet" href="./index.css">
+    <title>CSS 3D</title>
+</head>
+
+<body>
+    <div id="object">
+        <div id="back">
+            <div id="top" class="around"></div>
+            <div id="left" class="around"></div>
+            <div id="text">hello world</div>
+            <div id="right" class="around"></div>
+            <div id="bottom" class="around"></div>
+        </div>
+    </div>
+
+    <ul id="control">
+        <li>
+            <label class="label">X:</label>
+            <span class="value value-x"></span>
+            <input type="range" id="range-x" class="range" min="-360" max="360" step="1" />
+        </li>
+        <li>
+            <label class="label">Y:</label>
+            <span class="value value-y"></span>
+            <input type="range" id="range-y" class="range" min="-360" max="360" step="1" />
+        </li>
+        <li>
+            <label class="label">Z:</label>
+            <span class="value value-z"></span>
+            <input type="range" id="range-z" class="range" min="-360" max="360" step="1" />
+        </li>
+        <li>
+            <label class="label">透视:</label>
+            <span class="value value-p"></span>
+            <input type="range" id="range-p" class="range" min="0" max="5000" step="1" value="500" />
+        </li>
+        <li>
+            <label class="label">长度:</label>
+            <span class="value value-l"></span>
+            <input type="range" id="range-l" class="range" min="0" max="30" step=".1" value="20" />
+        </li>
+        <li>
+            <label class="label">宽度:</label>
+            <span class="value value-w"></span>
+            <input type="range" id="range-w" class="range" min="0" max="360" step="1" value="30" />
+        </li>
+        <li>
+            <label class="label">高度:</label>
+            <span class="value value-h"></span>
+            <input type="range" id="range-h" class="range" min="0" max="40" step=".1" value="3" />
+        </li>
+        <button id="reset" onclick="resetValue()">重置</button>
+    </ul>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
